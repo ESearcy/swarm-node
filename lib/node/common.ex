@@ -33,20 +33,24 @@ defmodule Node.Common do
 
   # fully inclusive OR filter
   def filter_inclusive_or(list, filter) do
-    list =
-      for {k, v} <- filter do
-        # "filtering on k: #{k} v: #{v}" |> IO.inspect()
-        list2 =
-          for value <- v do
-            list = filter_list_on_key(list, k, value)
-            list
-          end
+    if filter != %{} do
+      list =
+        for {k, v} <- filter do
+          # "filtering on k: #{k} v: #{v}" |> IO.inspect()
+          list2 =
+            for value <- v do
+              list = filter_list_on_key(list, k, value)
+              list
+            end
 
-        list2
-      end
+          list2
+        end
 
-    List.flatten(list)
-    |> Enum.dedup()
+      List.flatten(list)
+      |> Enum.dedup()
+    else
+      list
+    end
   end
 
   def filter_list_on_key(list, key, value) do
