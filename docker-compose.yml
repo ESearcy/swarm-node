@@ -1,0 +1,22 @@
+---
+version: '3.7'
+
+services:
+  app:
+    container_name: swarm-node
+    image: esaucy/swarm-node:latest
+    build: .
+    entrypoint: make docker.entrypoint
+    environment:
+      PORT: 4001
+    networks:
+      - default
+    ports:
+      - "4001:4001"
+    volumes:
+      - .:/app
+      - ./.docker-volumes/swarm-node-build:/app/_build
+
+networks:
+  default:
+    driver: bridge
