@@ -29,9 +29,11 @@ defmodule Node.Pisystem.Logics.DockerLogic do
       ])
 
     lines = String.split(details, "\n")
+    lines |> IO.inspect()
     list = Enum.map(lines, fn x -> split_line_into_column(x) end)
 
     list = Enum.filter(list, &(!is_nil(&1)))
+    list |> IO.inspect()
     list
   end
 

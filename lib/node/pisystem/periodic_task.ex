@@ -1,4 +1,4 @@
-defmodule Example.BitcoinPriceUpdater do
+defmodule Example.PingService do
   use Task
 
   def start_link(_arg) do

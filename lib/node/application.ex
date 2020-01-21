@@ -10,7 +10,7 @@ defmodule Node.Application do
     children = [
       # Start the endpoint when the application starts
       NodeWeb.Endpoint,
-      Example.BitcoinPriceUpdater
+      Example.PingService
       # Starts a worker by calling: Node.Worker.start_link(arg)
       # {Node.Worker, arg},
     ]
